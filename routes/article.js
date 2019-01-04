@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
 
 
 // Delete Article by Id
-router.delete('/:id', (req, res) => {
+router.delete('/article/:id', (req, res) => {
 
     var tempId = req.params.id
     article.destroy({
