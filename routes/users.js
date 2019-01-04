@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 // Show all users
-router.get('/users', (req, res) => {
+router.get('/', (req, res) => {
 
   var _allUsers = users.findAll().then(result => {
 
