@@ -11,23 +11,15 @@ router.get('/', function(req, res, next) {
 });
 
 // Show all users
-router.post('/users', (req, res) => {
+router.get('/users', (req, res) => {
 
-  var name = req.body.name
-  var email = req.body.email
-  
-  users.create({
-
-    name: name,
-    email: email
-  }).then(result => {
+  var _allUsers = users.findAll().then(result => {
 
     res.json({
 
-      message : 'Berhasil'
+      users : result
     })
-
-  }).catch(err => console.log(err))
+  })
 })
 
 // Registrasi router
