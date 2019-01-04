@@ -125,7 +125,7 @@ router.post('/logout', (req, res) => {
 })
 
 // Delete User by Id
-router.delete('/users/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
 
   var tempId = req.params.id
   users.destroy({
