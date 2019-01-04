@@ -124,4 +124,23 @@ router.post('/logout', (req, res) => {
 
 })
 
-module.exports = router;
+// Delete User by Id
+router.delete('/:id', (req, res) => {
+
+  var _id = req.params.tempId
+  users.destroy({
+
+    where: {
+      tempId : _id
+    }
+
+  }).then(result => {
+
+    res.json({
+
+      message: 'Berhasil menghapus'
+    })
+  })
+})
+
+module.exports = router

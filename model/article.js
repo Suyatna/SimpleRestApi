@@ -8,7 +8,7 @@ const article = conn.define('article', {
     content: sequelize.STRING
 }, {
 
-    timestamps: false
+    timestamps: false    
 })
 
 module.exports = article
