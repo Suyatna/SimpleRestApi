@@ -10,6 +10,26 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+// Show all users
+router.post('/users', (req, res) => {
+
+  var name = req.body.name
+  var email = req.body.email
+  
+  users.create({
+
+    name: name,
+    email: email
+  }).then(result => {
+
+    res.json({
+
+      message : 'Berhasil'
+    })
+
+  }).catch(err => console.log(err))
+})
+
 // Registrasi router
 router.post('/register', (req, res) => {
   
