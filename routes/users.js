@@ -4,12 +4,6 @@ var router = express.Router();
 var users = require('../model/users')
 var bcrypt = require('bcrypt-nodejs')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-
-  res.send('respond with a resource');
-});
-
 // Show all users
 router.get('/', (req, res) => {
 
