@@ -8,6 +8,7 @@ const article = conn.define('article', {
     author: sequelize.STRING,
     category: sequelize.STRING,
     salary: sequelize.STRING,
+    location: sequelize.STRING,
     content_desc: sequelize.STRING
 }, {
 

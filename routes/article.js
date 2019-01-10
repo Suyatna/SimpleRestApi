@@ -3,7 +3,7 @@ var router = express.Router();
 
 var article = require('../model/article')
 
-router.post('/article', (req, res) => {
+router.post('/create', (req, res) => {
 
     var title = req.body.title
     var imageurl = req.body.imageurl    
