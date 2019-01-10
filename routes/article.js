@@ -6,7 +6,7 @@ var article = require('../model/article')
 router.post('/create', (req, res) => {
 
     var title = req.body.title
-    var imageurl = req.body.imageurl    
+    var imageurl = req.body.imageurl  
     var author = req.body.author
     var category = req.body.category
     var salary = req.body.salary
@@ -16,7 +16,7 @@ router.post('/create', (req, res) => {
     article.create({
 
         title: title,
-        imageurl: imageurl,        
+        imageurl: imageurl,      
         author: author,
         category: category,
         salary: salary,
