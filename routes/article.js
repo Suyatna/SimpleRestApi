@@ -10,6 +10,7 @@ router.post('/article', (req, res) => {
     var author = req.body.author
     var category = req.body.category
     var salary = req.body.salary
+    var location = req.body.location
     var content_desc = req.body.content_desc
 
     article.create({
@@ -19,6 +20,7 @@ router.post('/article', (req, res) => {
         author: author,
         category: category,
         salary: salary,
+        location: location,
         content_desc: content_desc
     }).then(result => {
 
