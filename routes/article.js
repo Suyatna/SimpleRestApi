@@ -34,7 +34,13 @@ router.post('/create', (req, res) => {
 
 router.get('/', (req, res) => {
 
-    var _article = article.findAll().then(result => {
+    var _article = article.findAll({
+
+        where: {
+
+            imageurl: req.params.imageurl
+        }
+    }).then(result => {
 
         res.json({
 
