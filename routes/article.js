@@ -39,7 +39,8 @@ router.get('/', (req, res) => {
         res.json({
 
             article : result
-        })
+            
+        }).catch(err => console.log(err))
     })
 })
 
@@ -60,7 +61,8 @@ router.delete('/delete/:id', (req, res) => {
 
             message: 'Berhasil menghapus'
         })
-    })
+
+    }).catch(err => console.log(err))
 })
 
 module.exports = router
