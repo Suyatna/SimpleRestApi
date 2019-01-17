@@ -43,6 +43,8 @@ router.post('/register', (req, res) => {
 // Login router
 router.post('/login', (req, res) => {
 
+  var id = req.body.id
+  var name = req.body.name
   var email = req.body.email
   var password = req.body.password
 
@@ -60,8 +62,7 @@ router.post('/login', (req, res) => {
 
         'message' : 'Email tidak ditemukan'
       })
-    }
-    else {
+    } else {
 
       if (bcrypt.compareSync(password, result.password)) {
 
@@ -81,6 +82,9 @@ router.post('/login', (req, res) => {
 
           res.json({
 
+            id: id,
+            name: name,
+            email: email,
             generate_token: generate_token
           })
         }).catch(err => console.log(err))
