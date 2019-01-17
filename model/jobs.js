@@ -1,7 +1,7 @@
 const sequelize = require('sequelize')
 const conn = require('../config/db')
 
-const article = conn.define('article', {
+const article = conn.define('jobs', {
 
     title: sequelize.STRING,
     imageurl: sequelize.STRING,
