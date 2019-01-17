@@ -43,6 +43,8 @@ router.post('/register', (req, res) => {
 // Login router
 router.post('/login', (req, res) => {
 
+  var id = req.body.id
+  var name = req.body.name
   var email = req.body.email
   var password = req.body.password
 
@@ -52,7 +54,13 @@ router.post('/login', (req, res) => {
       
       email: email
     }
-  }).then(result => {
+  }).then(result => {    
+
+    res.json({
+
+      id : id,
+      name : name
+    })
 
     if (!result) {
 
@@ -79,8 +87,7 @@ router.post('/login', (req, res) => {
         }).then(result => {
 
           res.json({
-
-            users: result,
+            
             generate_token: generate_token
           })
         }).catch(err => console.log(err))
