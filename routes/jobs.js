@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router();
 
-var article = require('../model/article')
+var article = require('../model/jobs')
 
 router.post('/create', (req, res) => {
 
