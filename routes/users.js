@@ -59,7 +59,8 @@ router.post('/login', (req, res) => {
     res.json({
 
       id : id,
-      name : name
+      name : name,
+      email : email
     })
 
     if (!result) {
@@ -82,13 +83,13 @@ router.post('/login', (req, res) => {
 
           where: {
             
-            email: email
+            email : email
           }
         }).then(result => {
 
           res.json({
             
-            generate_token: generate_token
+            generate_token : generate_token
           })
         }).catch(err => console.log(err))
       }
