@@ -1,7 +1,7 @@
 const sequelize = require('sequelize')
 const conn = require('../config/db')
 
-const article = conn.define('jobs', {
+const jobs = conn.define('jobs', {
 
     title: sequelize.STRING,
     imageurl: sequelize.STRING,
@@ -15,4 +15,4 @@ const article = conn.define('jobs', {
     timestamps: false    
 })
 
-module.exports = article
+module.exports = jobs

@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router();
 
-var article = require('../model/jobs')
+var jobs = require('../model/jobs')
 
 router.post('/create', (req, res) => {
 
@@ -13,7 +13,7 @@ router.post('/create', (req, res) => {
     var location = req.body.location
     var content_desc = req.body.content_desc
 
-    article.create({
+    jobs.create({
 
         title: title,
         imageurl: imageurl,      
@@ -34,22 +34,22 @@ router.post('/create', (req, res) => {
 
 router.get('/', (req, res) => {
 
-    var _article = article.findAll().then(result => {
+    var _jobs = jobs.findAll().then(result => {
 
         res.json({
 
-            article : result
+            jobs : result
 
         }).catch(err => console.log(err))
     })
 })
 
 
-// Delete Article by Id
+// Delete Jobs by Id
 router.delete('/delete/:id', (req, res) => {
 
     var tempId = req.params.id
-    article.destroy({
+    jobs.destroy({
 
         where: {
             id : tempId
