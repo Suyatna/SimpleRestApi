@@ -41,7 +41,7 @@ router.post('/register', (req, res) => {
 })
 
 // Login router
-router.get('/login', (req, res) => {
+router,post('/login', (req, res) => {
 
   var email = req.body.email
   var password = req.body.password
