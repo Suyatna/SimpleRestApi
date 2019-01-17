@@ -9,10 +9,11 @@ const jobs = conn.define('jobs', {
     category: sequelize.STRING,
     salary: sequelize.STRING,
     location: sequelize.STRING,
-    content_desc: sequelize.STRING
+    content_desc: sequelize.STRING,
+    date_created : sequelize.DATE
 }, {
 
-    timestamps: false    
+    timestamps : false
 })
 
 module.exports = jobs

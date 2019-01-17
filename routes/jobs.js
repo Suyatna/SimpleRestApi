@@ -12,16 +12,18 @@ router.post('/create', (req, res) => {
     var salary = req.body.salary
     var location = req.body.location
     var content_desc = req.body.content_desc
+    var date_created = req.body.date_created
 
     jobs.create({
 
-        title: title,
-        imageurl: imageurl,      
-        author: author,
-        category: category,
-        salary: salary,
-        location: location,
-        content_desc: content_desc
+        title : title,
+        imageurl : imageurl,      
+        author : author,
+        category : category,
+        salary : salary,
+        location : location,
+        content_desc : content_desc,
+        date_created : date_created
     }).then(result => {
 
         res.json({
