@@ -43,8 +43,6 @@ router.post('/register', (req, res) => {
 // Login router
 router.post('/login', (req, res) => {
 
-  var id = req.body.id
-  var name = req.body.name
   var email = req.body.email
   var password = req.body.password
 
@@ -75,16 +73,14 @@ router.post('/login', (req, res) => {
         }, {
 
           where: {
-
+            
             email: email
           }
         }).then(result => {
 
           res.json({
 
-            id: id,
-            name: name,
-            email: email,
+            users: result,
             generate_token: generate_token
           })
         }).catch(err => console.log(err))
