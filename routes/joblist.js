@@ -6,14 +6,12 @@ var joblist = require('../model/joblist')
 router.post('/create', (req, res) => {
     
     var id_users = req.body.id_users
-    var id_jobs = req.body.id_jobs
-    var cv = req.body.cv
+    var id_jobs = req.body.id_jobs    
 
     joblist.create({
 
         id_users : id_users,
-        id_jobs : id_jobs,
-        cv : cv
+        id_jobs : id_jobs        
     }).then(result => {
 
         res.json({
