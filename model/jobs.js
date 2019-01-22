@@ -10,7 +10,8 @@ const jobs = conn.define('jobs', {
     salary: sequelize.STRING,
     location: sequelize.STRING,
     content_desc: sequelize.STRING,
-    date_created : sequelize.DATE
+    date_created : sequelize.STRING,
+    uri_form : sequelize.STRING
 }, {
 
     timestamps : false
