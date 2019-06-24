@@ -1,3 +1,13 @@
+const multer     = require('multer')
+const Datauri    = require('datauri')
+const path       = require('path')
+const storage    = multer.memoryStorage()
+const cloudinary = require('../config/cloudinary')
+
+const multerUploads = multer({storage:storage}).single('avatar')
+const dUri = new Datauri()
+const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);    
+
 var express = require('express')
 var router = express.Router();
 
@@ -22,13 +32,15 @@ router.post('/register', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
+  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
 
   users.create({
 
     name: name,
     email: email,
     password: password,
-    remember_tokenL: ''
+    remember_tokenL: '',
+    image: image
   }).then(result => {
 
     res.json({
@@ -131,6 +143,31 @@ router.post('/logout', (req, res) => {
 
   }).catch(err => console.log(err))
 
+})
+
+router.post('/updatephoto/:id', multerUploads, (req, res) => {
+
+  let file = dataUri(req).content
+
+  cloudinary.v2.uploader.upload(file, (err, imageCloud) => {
+    console.log('imageCloud ', imageCloud)
+    console.log('error ', err)
+
+    users.find({ where: { id: req.params.id } })
+      .on('success', function(user) {
+
+        // Check if record exist in db
+        if (user) {
+          user.update({ image: imageCloud.url }).success(function () { 
+
+            res.json({
+              status: "Berhasil upload foto!"
+            })
+           })
+        }
+      })
+  })
+  
 })
 
 // Delete User by Id

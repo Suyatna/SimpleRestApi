@@ -6,7 +6,8 @@ const users = conn.define('users', {
     name : sequelize.STRING,
     email : sequelize.STRING,
     password:  sequelize.STRING,
-    remember_token : sequelize.STRING
+    remember_token : sequelize.STRING,
+    image: sequelize.STRING
 }, {
     
     timestamps : false
