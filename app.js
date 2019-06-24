@@ -5,14 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sequelize = require('./config/db')
 
-sequelize.sync().then(() => {
+sequelize.sync({
+
+  force: false
+}).then(() => {
   console.log("Connect to jaws DB")
 })
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jobsRouter = require('./routes/jobs');
-var joblistRouter = require('./routes/joblist');
 
 var app = express();
 
@@ -29,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jobs', jobsRouter);
-app.use('/joblist', joblistRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
