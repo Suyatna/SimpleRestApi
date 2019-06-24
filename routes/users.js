@@ -5,8 +5,11 @@ const storage    = multer.memoryStorage()
 const cloudinary = require('../config/cloudinary')
 
 const multerUploads = multer({storage:storage}).single('avatar')
+const multerUploadsArray = multer({storage:storage}).array('photos', 2)
+
 const dUri = new Datauri()
-const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);    
+const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);  
+const dataUriArray = (req, i) => dUri.format(path.extname(req.files[i].originalname).toString(), req.files[i].buffer);
 
 var express = require('express')
 var router = express.Router();
@@ -145,7 +148,7 @@ router.post('/logout', (req, res) => {
 
 })
 
-router.post('/updatephoto/:id', multerUploads, (req, res) => {
+router.post('/updateavatar/:id', multerUploads, (req, res) => {
 
   let file = dataUri(req).content
 
@@ -161,9 +164,36 @@ router.post('/updatephoto/:id', multerUploads, (req, res) => {
 
     .then(function(rowsUpdate) {
 
-      res.json({ status: "Success!" })
+      res.json({ status: "Success upload avatar!" })
     })
   })
+})
+
+outer.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
+
+  for (i = 0; i < 2; i++) {
+    
+    let files = dataUriArray(req, i).content
+    console.log(files)
+  }  
+
+  res.json({ status: "Success upload files!" })
+
+  // cloudinary.v2.uploader.upload(file, (err, imageCloud) => {
+  //   console.log('imageCloud ', imageCloud)
+  //   console.log('error ', err)
+
+  //   users.update({
+  //     image: imageCloud.url
+  //   }, {
+  //     where: { id: req.params.id }
+  //   })
+
+  //   .then(function(rowsUpdate) {
+
+  //     res.json({ status: "Success!" })
+  //   })
+  // })
 })
 
 // Delete User by Id
