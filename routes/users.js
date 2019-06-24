@@ -35,8 +35,8 @@ router.post('/register', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
-  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png",
-  var background = null,
+  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  var background = null
   var bukti = null
 
   users.create({
