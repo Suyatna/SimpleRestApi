@@ -171,29 +171,32 @@ router.post('/updateavatar/:id', multerUploads, (req, res) => {
 
 router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
 
+  var photos = ["background", "bukti"];
+
   for (i = 0; i < 2; i++) {
     
     let files = dataUriArray(req, i).content
     console.log(files)
-  }  
+
+    cloudinary.v2.uploader.upload(files, (err, imageCloud) => {
+      console.log('imageCloud ', imageCloud)
+      console.log('error ', err)
+  
+      users.update({
+        [photos[i]]: imageCloud.url
+      }, {
+        where: { id: req.params.id }
+      })
+  
+      .then(function(rowsUpdate) {
+  
+        //
+      })
+    })
+
+  }
 
   res.json({ status: "Success upload files!" })
-
-  // cloudinary.v2.uploader.upload(file, (err, imageCloud) => {
-  //   console.log('imageCloud ', imageCloud)
-  //   console.log('error ', err)
-
-  //   users.update({
-  //     image: imageCloud.url
-  //   }, {
-  //     where: { id: req.params.id }
-  //   })
-
-  //   .then(function(rowsUpdate) {
-
-  //     res.json({ status: "Success!" })
-  //   })
-  // })
 })
 
 // Delete User by Id
