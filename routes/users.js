@@ -5,11 +5,9 @@ const storage    = multer.memoryStorage()
 const cloudinary = require('../config/cloudinary')
 
 const multerUploads = multer({storage:storage}).single('avatar')
-const multerUploadsArray = multer({storage:storage}).array('photos', 2)
 
 const dUri = new Datauri()
 const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);  
-const dataUriArray = (req, i) => dUri.format(path.extname(req.files[i].originalname).toString(), req.files[i].buffer);
 
 var express = require('express')
 var router = express.Router();
@@ -35,9 +33,7 @@ router.post('/register', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
-  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
-  var background = null
-  var bukti = null
+  var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
 
   users.create({
 
@@ -45,9 +41,7 @@ router.post('/register', (req, res) => {
     email: email,
     password: password,
     remember_tokenL: '',
-    image: image,
-    background: background,
-    bukti: bukti
+    avatar: avatar
   }).then(result => {
 
     res.json({
@@ -161,7 +155,7 @@ router.post('/updateavatar/:id', multerUploads, (req, res) => {
     console.log('error ', err)
 
     users.update({
-      image: imageCloud.url
+      avatar: imageCloud.url
     }, {
       where: { id: req.params.id }
     })
@@ -171,37 +165,6 @@ router.post('/updateavatar/:id', multerUploads, (req, res) => {
       res.json({ status: "Success upload avatar!" })
     })
   })
-})
-
-router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
-
-  let photos = ["background", "bukti"];
-
-  for (i = 0; i < 2; i++) {
-    
-    let files = dataUriArray(req, i).content
-    console.log(files)
-
-    cloudinary.v2.uploader.upload(files, (err, imageCloud) => {
-      console.log('imageCloud ', imageCloud)
-      console.log('error ', err)
-      console.log([photos[i]])
-  
-      // users.update({
-      //   [photos[i]]: imageCloud.url
-      // }, {
-      //   where: { id: req.params.id }
-      // })
-  
-      // .then(function(rowsUpdate) {
-  
-      //   //
-      // })
-    })
-
-  }
-
-  res.json({ status: "Success upload files!" })
 })
 
 // Delete User by Id
