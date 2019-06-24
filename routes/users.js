@@ -95,7 +95,7 @@ router.post('/login', (req, res) => {
       else {
 
         // Password tidak sama
-        res.json({
+        res.status(401).json({
 
           'message' : 'Password salah!'
         })
