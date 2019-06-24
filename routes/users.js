@@ -35,7 +35,9 @@ router.post('/register', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
-  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  var image = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png",
+  var background = null,
+  var bukti = null
 
   users.create({
 
@@ -43,7 +45,9 @@ router.post('/register', (req, res) => {
     email: email,
     password: password,
     remember_tokenL: '',
-    image: image
+    image: image,
+    background: background,
+    bukti: bukti
   }).then(result => {
 
     res.json({
@@ -183,7 +187,7 @@ router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
       console.log('error ', err)
   
       users.update({
-        [photos[i]]: imageCloud.url
+        photos[i]: imageCloud.url
       }, {
         where: { id: req.params.id }
       })
