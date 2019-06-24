@@ -169,7 +169,7 @@ router.post('/updateavatar/:id', multerUploads, (req, res) => {
   })
 })
 
-outer.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
+router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
 
   for (i = 0; i < 2; i++) {
     
