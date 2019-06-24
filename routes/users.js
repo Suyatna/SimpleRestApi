@@ -175,7 +175,7 @@ router.post('/updateavatar/:id', multerUploads, (req, res) => {
 
 router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
 
-  var photos = ["background", "bukti"];
+  let photos = ["background", "bukti"];
 
   for (i = 0; i < 2; i++) {
     
@@ -185,7 +185,7 @@ router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
     cloudinary.v2.uploader.upload(files, (err, imageCloud) => {
       console.log('imageCloud ', imageCloud)
       console.log('error ', err)
-      console.log([photos[0]])
+      console.log([photos[i]])
   
       // users.update({
       //   [photos[i]]: imageCloud.url
