@@ -153,21 +153,17 @@ router.post('/updatephoto/:id', multerUploads, (req, res) => {
     console.log('imageCloud ', imageCloud)
     console.log('error ', err)
 
-    users.find({ where: { id: req.params.id } })
-      .on('success', function(user) {
+    users.update({
+      image: imageCloud.url
+    }, {
+      where: { id: req.params.id }
+    })
 
-        // Check if record exist in db
-        if (user) {
-          user.update({ image: imageCloud.url }).success(function () { 
+    .then(function(rowsUpdate) {
 
-            res.json({
-              status: "Berhasil upload foto!"
-            })
-           })
-        }
-      })
+      res.json({ status: "Success!" })
+    })
   })
-  
 })
 
 // Delete User by Id
