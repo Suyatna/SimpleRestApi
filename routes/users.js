@@ -61,7 +61,7 @@ router.post('/login', (req, res) => {
 
     if (!result) {
 
-      res.json({
+      res.status(401).json({
 
         'message' : 'Email tidak ditemukan'
       })
