@@ -185,17 +185,18 @@ router.post('/uploadphotos/:id', multerUploadsArray, (req, res) => {
     cloudinary.v2.uploader.upload(files, (err, imageCloud) => {
       console.log('imageCloud ', imageCloud)
       console.log('error ', err)
+      console.log([photos[i]])
   
-      users.update({
-        photos[i]: imageCloud.url
-      }, {
-        where: { id: req.params.id }
-      })
+      // users.update({
+      //   [photos[i]]: imageCloud.url
+      // }, {
+      //   where: { id: req.params.id }
+      // })
   
-      .then(function(rowsUpdate) {
+      // .then(function(rowsUpdate) {
   
-        //
-      })
+      //   //
+      // })
     })
 
   }
