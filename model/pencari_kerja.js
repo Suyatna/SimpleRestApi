@@ -8,8 +8,8 @@ const pencari_kerja = conn.define('pencari_kerja', {
     password: sequelize.STRING,
     remember_token: sequelize.STRING,
     avatar: sequelize.STRING,
-    Alamat: sequelize.STRING,
-    Pendidikan_terakhir: sequelize.STRING,
+    alamat: sequelize.STRING,
+    pendidikan_terakhir: sequelize.STRING,
     cv: sequelize.STRING
 }, {
     timestamps: false
