@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
             pencari_kerja : result
         })
-    }).catch(err => console.log(err))
+    })
 })
 
 // Registrasi router
