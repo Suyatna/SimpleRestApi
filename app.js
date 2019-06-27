@@ -7,7 +7,7 @@ var sequelize = require('./config/db')
 
 sequelize.sync({
 
-  // force: false
+  force: false
 }).then(() => {
   console.log("Connect to jaws DB")
 })
