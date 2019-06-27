@@ -20,11 +20,12 @@ router.get('/', (req, res) => {
 
     var _allPencariKerja = pencari_kerja.findAll().then(result => {
 
+        console.log(result)
         res.json({
 
             pencari_kerja : result
         })
-    })
+    }).catch(err => console.log(err))
 })
 
 // Registrasi router
