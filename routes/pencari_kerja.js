@@ -18,7 +18,7 @@ var bcrypt = require('bcrypt-nodejs')
 // Show all pencari_kerja
 router.get('/', (req, res) => {
 
-    var _allPencariKerja = pencari_kerja.findAll().then(result => {
+    pencari_kerja.findAll().then(result => {
 
         console.log(result)
         res.json({
