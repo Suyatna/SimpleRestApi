@@ -15,6 +15,7 @@ sequelize.sync({
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jobsRouter = require('./routes/jobs');
+var pencariKerjaRouter = require('./routes/pencari_kerja');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jobs', jobsRouter);
+app.use('/pencariKerja', pencariKerjaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
