@@ -27,4 +27,30 @@ router.get('/', (req, res) => {
     }).catch(err => console.log(err))
 })
 
+// Registrasi router
+router.post('/register', (req, res) => {
+  
+    var name = req.body.name
+    var email = req.body.email
+    var password = bcrypt.hashSync(req.body.password)
+    var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  
+    users.create({
+  
+      name: name,
+      email: email,
+      password: password,
+      remember_tokenL: '',
+      avatar: avatar
+    }).then(result => {
+  
+      res.json({
+  
+        message: 'Success'
+      })
+  
+    }).catch(err => console.log(err))
+  
+  })
+
 module.exports = router
