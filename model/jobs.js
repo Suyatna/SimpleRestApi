@@ -3,6 +3,12 @@ const conn = require('../config/db')
 
 const jobs = conn.define('jobs', {
 
+    id_jobs: {
+        type: sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    
     title: sequelize.STRING,
     imageurl: sequelize.STRING,
     author: sequelize.STRING,

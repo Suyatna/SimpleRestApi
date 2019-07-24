@@ -3,6 +3,12 @@ const conn = require('../config/db')
 
 const pencari_kerja = conn.define('pencari_kerja', {
 
+    id_pencari_kerja: {
+        type: sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+
     name: sequelize.STRING,
     email: sequelize.STRING,
     password: sequelize.STRING,

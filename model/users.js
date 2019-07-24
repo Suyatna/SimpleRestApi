@@ -3,6 +3,12 @@ const conn = require('../config/db')
 
 const users = conn.define('users', {
 
+    id_users: {
+        type: sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+
     name : sequelize.STRING,
     email : sequelize.STRING,
     password:  sequelize.STRING,

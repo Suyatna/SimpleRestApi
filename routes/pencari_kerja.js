@@ -60,7 +60,7 @@ router.post('/login', (req, res) => {
   var id = req.body.id
   var name = req.body.name
   var email = req.body.email
-  var password = req.body.password
+  var password = req.body.password 
 
   pencari_kerja.findOne({
 
