@@ -28,13 +28,13 @@ router.get('/', (req, res) => {
 })
 
 // Registrasi router
-router.post('/registerPencariKerja', (req, res) => {
+router.post('/registerAdmin', (req, res) => {
   
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
   var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
-  var levelUsers = 'pencari_kerja'
+  var levelUsers = 'admin'
 
   users.create({
 
