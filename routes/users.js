@@ -96,7 +96,7 @@ router.post('/registerPemberiKerja', (req, res) => {
   var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
   var levelUsers = 'pemberi_kerja'
   var alamat = req.body.alamat
-  var name_perusahaan = req.body.name_perusahaan
+  var nama_perusahaan = req.body.nama_perusahaan
 
   users.create({
 
@@ -107,7 +107,7 @@ router.post('/registerPemberiKerja', (req, res) => {
     avatar: avatar,
     levelUsers: levelUsers,
     alamat: alamat,
-    nama_perusahaan
+    nama_perusahaan: nama_perusahaan
   }).then(result => {
 
     res.json({
