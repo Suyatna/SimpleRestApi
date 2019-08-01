@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
   })
 })
 
-// Registrasi router
+// Registrasi Admin
 router.post('/registerAdmin', (req, res) => {
   
   var name = req.body.name
@@ -44,6 +44,70 @@ router.post('/registerAdmin', (req, res) => {
     remember_tokenL: '',
     avatar: avatar,
     levelUsers: levelUsers
+  }).then(result => {
+
+    res.json({
+
+      message: 'Success'
+    })
+
+  }).catch(err => console.log(err))
+
+})
+
+// Registrasi Pencari Kerja
+router.post('/registerPencariKerja', (req, res) => {
+  
+  var name = req.body.name
+  var email = req.body.email
+  var password = bcrypt.hashSync(req.body.password)
+  var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  var levelUsers = 'pencari_kerja'
+  var alamat = req.body.alamat
+  var cv = req.body.cv
+
+  users.create({
+
+    name: name,
+    email: email,
+    password: password,
+    remember_tokenL: '',
+    avatar: avatar,
+    levelUsers: levelUsers,
+    alamat: alamat,
+    cv: cv
+  }).then(result => {
+
+    res.json({
+
+      message: 'Success'
+    })
+
+  }).catch(err => console.log(err))
+
+})
+
+// Registrasi Pemberi Kerja
+router.post('/registerPemberiKerja', (req, res) => {
+  
+  var name = req.body.name
+  var email = req.body.email
+  var password = bcrypt.hashSync(req.body.password)
+  var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  var levelUsers = 'pemberi_kerja'
+  var alamat = req.body.alamat
+  var name_perusahaan = req.body.name_perusahaan
+
+  users.create({
+
+    name: name,
+    email: email,
+    password: password,
+    remember_tokenL: '',
+    avatar: avatar,
+    levelUsers: levelUsers,
+    alamat: alamat,
+    nama_perusahaan
   }).then(result => {
 
     res.json({
@@ -74,7 +138,6 @@ router.post('/login', (req, res) => {
 
     id = result.id
     name = result.name
-    levelUsers = levelUsers.name
 
     if (!result) {
 
@@ -108,8 +171,7 @@ router.post('/login', (req, res) => {
             id : id,
             name : name,
             email : email,
-            generate_token : generate_token,
-            levelUsers : levelUsers
+            generate_token : generate_token
           })
         }).catch(err => console.log(err))
       }

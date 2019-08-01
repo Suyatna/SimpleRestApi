@@ -17,7 +17,8 @@ const users = conn.define('users', {
     avatar: sequelize.STRING,
     alamat: sequelize.STRING,
     pendidikan_terakhir: sequelize.STRING,
-    cv: sequelize.STRING
+    cv: sequelize.STRING,
+    nama_perusahaan: sequelize.STRING
 }, {
     
     timestamps : false
