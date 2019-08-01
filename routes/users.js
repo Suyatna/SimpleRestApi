@@ -28,12 +28,13 @@ router.get('/', (req, res) => {
 })
 
 // Registrasi router
-router.post('/register', (req, res) => {
+router.post('/registerPencariKerja', (req, res) => {
   
   var name = req.body.name
   var email = req.body.email
   var password = bcrypt.hashSync(req.body.password)
   var avatar = "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png"
+  var levelUsers = 'pencari_kerja'
 
   users.create({
 
@@ -41,7 +42,8 @@ router.post('/register', (req, res) => {
     email: email,
     password: password,
     remember_tokenL: '',
-    avatar: avatar
+    avatar: avatar,
+    levelUsers: levelUsers
   }).then(result => {
 
     res.json({
@@ -60,6 +62,7 @@ router.post('/login', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var password = req.body.password
+  var levelUsers = req.body.levelUsers
 
   users.findOne({
 
@@ -71,6 +74,7 @@ router.post('/login', (req, res) => {
 
     id = result.id
     name = result.name
+    levelUsers = levelUsers.name
 
     if (!result) {
 
@@ -86,6 +90,7 @@ router.post('/login', (req, res) => {
 
         // Login
         var generate_token = bcrypt.hashSync(email)
+      
 
         users.update({
 
@@ -103,7 +108,8 @@ router.post('/login', (req, res) => {
             id : id,
             name : name,
             email : email,
-            generate_token : generate_token
+            generate_token : generate_token,
+            levelUsers : levelUsers
           })
         }).catch(err => console.log(err))
       }

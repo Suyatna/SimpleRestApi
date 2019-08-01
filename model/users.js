@@ -9,11 +9,15 @@ const users = conn.define('users', {
         autoIncrement: true
     },
 
+    levelUsers: sequelize.ENUM('admin', 'pencari_kerja', 'pemberi_kerja'),
     name : sequelize.STRING,
     email : sequelize.STRING,
     password:  sequelize.STRING,
     remember_token : sequelize.STRING,
-    avatar: sequelize.STRING
+    avatar: sequelize.STRING,
+    alamat: sequelize.STRING,
+    pendidikan_terakhir: sequelize.STRING,
+    cv: sequelize.STRING
 }, {
     
     timestamps : false
