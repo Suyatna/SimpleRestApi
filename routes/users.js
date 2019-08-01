@@ -138,6 +138,7 @@ router.post('/login', (req, res) => {
 
     id = result.id
     name = result.name
+    levelUsers = result.levelUsers
 
     if (!result) {
 
@@ -171,7 +172,8 @@ router.post('/login', (req, res) => {
             id : id,
             name : name,
             email : email,
-            generate_token : generate_token
+            generate_token : generate_token,
+            levelUsers : levelUsers
           })
         }).catch(err => console.log(err))
       }
